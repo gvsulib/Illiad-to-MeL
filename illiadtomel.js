@@ -1,19 +1,23 @@
+$(document).ready(function() {
+	$('#LoanTitle').change(function() {
 
-// When title has been entered, run function
+		var title = encodeURIComponent($(this).val());
 
-$('#LoanTitle').change(checkMel(encodeURIComponent($(this).val())));
+		$.ajax({
+	    	type: "POST",
+	    	crossdomain: true,
+	    	url: "https://gvsuliblabs.com/labs/illiadtomel/index.php",
+	    	data: {t: title}
+		})
+		.done(function(msg) {
+	    	console.log('Data returned:' + msg);
+	    	$('#melCheck').html(msg);
+
+	    	$('#mel-redirect').click(function() {
+	    		_gaq.push(['_trackEvent', 'Events', 'MeL Redirect', '1']);
+	    	});
 
 
-
-function checkMel(title) {
-	
-	$.ajax({
-    	method: "POST",
-    	crossdomain: true,
-    	url: "https://gvsuliblabs.com/labs/illiadtomel/index.php",
-    	data: {t: title}
-	}).done(function(msg) {
-    	console.log('Date returned:' + msg);
-    	$('#melCheck').html(msg);
+		});
 	});
-}
+});
