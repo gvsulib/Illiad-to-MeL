@@ -13,7 +13,7 @@ function checkMel(title) {
     	url: "https://gvsuliblabs.com/labs/illiadtomel/index.php",
     	data: {t: title}
 	}).done(function(msg) {
-    	console.log(msg);
+    	console.log('Date returned:' + msg);
     	$('#melCheck').html(msg);
 	});
 }
