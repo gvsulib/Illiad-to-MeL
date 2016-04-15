@@ -20,7 +20,7 @@ if(count($html->find('.bibScreen')) > 0) { // Takes you to a record
 	// Count number of owning libraries
 	$copies = $html->find('#owningLibs td');
 
-	echo '<p>' . count($copies) . ' other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p>';
+	echo '<div class="alert alert-warning"><p>' . count($copies) . ' other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p></div>';
 	
 }
 
@@ -33,7 +33,7 @@ if(count($html->find('.browseScreen')) > 0) { // List of results
 
 	} else { // Possible results
 
-		echo '<p>Other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p>';
+		echo '<div class="alert alert-warning"><p>Other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p></div>';
 
 	}
 
