@@ -1,10 +1,11 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+
 include('../../libs/simple_html_dom.php');
 
 // Load MeL search page
 
-book_title = $_POST['t'];
+$book_title = $_POST['t'];
 
 $url = 'http://elibrary.mel.org/search/a?searchtype=t&searcharg=' . $book_title . '&SORT=D&submit.x=0&submit.y=0';
 
