@@ -1,15 +1,12 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-include('../libs/simple_html_dom.php');
+include('../../libs/simple_html_dom.php');
 
 // Load MeL search page
 
-//book_title = $_POST['t'];
-$book_title = 'obfuscation%3A%20a%20user%27s%20guide';
+book_title = $_POST['t'];
 
-//$url = 'http://elibrary.mel.org/search/a?searchtype=t&searcharg=' . $book_title . '&SORT=D&submit.x=0&submit.y=0';
-
-$url = 'http://elibrary.mel.org/search~S15/?searchtype=t&searcharg=kasjhdkajshdaks&searchscope=15&sortdropdown=-&SORT=D&extended=0&SUBMIT=Search&searchlimits=&searchorigarg=tobfuscation%3A+a+user%27s+guide';
+$url = 'http://elibrary.mel.org/search/a?searchtype=t&searcharg=' . $book_title . '&SORT=D&submit.x=0&submit.y=0';
 
 $html = file_get_html($url);
 
