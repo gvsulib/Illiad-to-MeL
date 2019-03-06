@@ -7,7 +7,7 @@ include('../../libs/simple_html_dom.php');
 
 $book_title = $_REQUEST['t'];
 
-$url = 'http://elibrary.mel.org/search/a?searchtype=t&searcharg=' . $book_title . '&SORT=D&submit.x=0&submit.y=0';
+$url = 'http://elibrary.mel.org/search/a?searchtype=t&searcharg=' . $book_title . '&SORT=D&submit=Submit';
 
 $html = file_get_html($url);
 
@@ -18,9 +18,10 @@ $html->find('.bibScreeen');
 if(count($html->find('.bibScreen')) > 0) { // Takes you to a record
 
 	// Count number of owning libraries
-	$copies = $html->find('#owningLibs td');
+	$copies = $html->find('#liblink')->plaintext;
+	$total_copies = split($copies, ' ');
 
-	echo '<div class="alert alert-info" style="margin-top: 1em;"><p>' . count($copies) . ' other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" id="mel-redirect" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p></div>';
+	echo '<div class="alert alert-info" style="margin-top: 1em;"><p>' . $total_copies[0] . ' other Michigan libraries may have this book. You can get it faster by requesting it directly.<br /><a class="btn btn-default" id="mel-redirect" target="_blank" href="' . $url . '">Request from another Michigan Library</a></p></div>';
 	
 }
 
